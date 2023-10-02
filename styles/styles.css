@@ -1,7 +1,7 @@
 :root{
-    --primary-color: rgb(237, 237, 237);
+    --primary-color: rgb(234, 234, 234);
     --header-color: rgb(179, 134, 134);
-    --default-edge-margin: 120px;
+    --default-edge-margin: 30px;
 }
 
 html{
@@ -33,10 +33,16 @@ div{
    /* align-content: center; */
 }
 
+main{
+    justify-content: center;
+}
+
 .body-container{
     display: flex;
     justify-content: center;
-    margin: 40px var(--default-edge-margin) 40px ;
+    margin: 120px var(--default-edge-margin);
+    flex-flow: row wrap-reverse;
+    overflow: hidden;
 }
 
 .body-container .item{
@@ -51,16 +57,26 @@ div{
     flex: 1;
 }
 
-.body-container .item.right{
-    flex: 3;
+.body-container .tools{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 6px;
 }
 
-@media screen and (width < 600px) {
-    .body-container{
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        align-items: center;
-        margin: 40px var(--default-edge-margin) 40px ;
-    }
+.body-container .item.right{
+    flex: 2;
+}
+
+#color-picker{
+    padding: 0px;
+    border-style: none;
+    width: 100px;
+    height: 100px;
+}
+
+#grid{
+    width: 300px;
+    height: 300px;
 }

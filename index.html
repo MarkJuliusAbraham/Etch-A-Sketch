@@ -16,24 +16,21 @@
     </div>
   </header>
 
-  <main>
+  <main class="main">
     <div class="body-container">
         <div class="item left">
+          <div class="tools">
+            <input id="color-picker" type="color" value="000000">
+            <button> Pen </button>
+            <button> Eraser</button>
             <div>
-                <p>Color Selector</p>
+              <input id="ranged-slider" type="range" value="5" min="1" max="60">
+              <p> Grid Size: </p>
             </div>
-            <div>
-              <p>Pen</p>
-            </div>
-            <div>
-              <p>Eraser</p>
-            </div>
-            <div>
-              <p>Grid-Dimension-Scroller</p>
-            </div>
+          </div>
         </div>
         <div class="item right">
-            <div>
+            <div id="grid">
                 <p>Grid</p>
             </div>
         </div>
@@ -41,7 +38,9 @@
 </main>
 
 <footer>
-  <p></p>
+  <div>
+    <p>End Note</p>
+  </div>
 </footer>
 </body>
 </html>
