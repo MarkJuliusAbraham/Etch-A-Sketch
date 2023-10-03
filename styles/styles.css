@@ -1,7 +1,15 @@
 :root{
-    --primary-color: rgb(234, 234, 234);
+    --background-color: rgb(234, 234, 234);
     --header-color: rgb(179, 134, 134);
+    --primary-color: rgb(153, 90, 90);
+    --highlighted-color: rgb(237, 140, 140);
     --default-edge-margin: 30px;
+    --default-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+p{
+    font-family: var(--default-font);
 }
 
 html{
@@ -11,18 +19,19 @@ html{
 }
 
 body{
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
     margin: 0px;
 }
 
 h1{
-    color: var(--header-color);
+    font-family: var(--default-font);
+    color: var(--highlighted-color);
 }
 
 div{
-    border-style: solid;
+    /* border-style: solid;
     border-color: black;
-    border-width: 1px;
+    border-width: 1px; */
 }
 
 .center-wrapper.single-item{
@@ -40,7 +49,7 @@ main{
 .body-container{
     display: flex;
     justify-content: center;
-    margin: 120px var(--default-edge-margin);
+    margin: 120px calc(var(--default-edge-margin));
     flex-flow: row wrap-reverse;
     overflow: hidden;
 }
@@ -53,8 +62,30 @@ main{
     align-items: center;
 }
 
+.tool-button{
+    width: 60%;
+    height: 45px;
+    background-color: var(--primary-color);
+    color: whitesmoke;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: transparent;
+    transition: transform 0.1s ease-in-out;
+    font-family: var(--default-font)}
+
+.tool-button:hover{
+    background-color: var(--highlighted-color);
+    transform: scale(1.05);
+}
+
+.tool-button:active{
+    background-color: whitesmoke;
+    color: var(--highlighted-color);
+    transform: scale(.9);
+}
+
+
 .body-container .item.left{
-    flex: 1;
 }
 
 .body-container .tools{
@@ -66,7 +97,6 @@ main{
 }
 
 .body-container .item.right{
-    flex: 2;
 }
 
 #color-picker{
@@ -76,7 +106,34 @@ main{
     height: 100px;
 }
 
+.grid-tools{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 #grid{
+    display: flex;
+    flex-direction: column;
+    
+    border-style: solid;
+    border-width: 1px;
     width: 300px;
     height: 300px;
+    box-shadow: 5px 5px;
+
+}
+
+#ranged-slider{
+    accent-color: var(--highlighted-color);
+}
+
+.grid-element{
+    flex: 1;
+}
+
+.footer{
+    margin: 0px var(--default-edge-margin);
+    text-align: right;
+    font-family: var(--default-font);
 }
