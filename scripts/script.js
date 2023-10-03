@@ -3,6 +3,7 @@ const eraserButton = document.getElementById("eraser-button");
 const colorPicker = document.getElementById("color-picker");
 const rangedPicker = document.getElementById("ranged-slider");
 const grid = document.getElementById("grid");
+const gridSizeDisplay = document.getElementById("grid-size-display");
 
 let activeTool = penButton;
 let originalButtonColor = penButton.style.backgroundColor;
@@ -64,7 +65,10 @@ function updateGridElements(){
 
 function updateGrid(value){
 
+    updateGridSizeDisplay(value);
     grid.innerHTML = "";
+
+
     let elementCopy = basicGridElement.cloneNode(true);
 
     for(let i = 0; i < value; i++)
@@ -90,9 +94,14 @@ function setInitialGridElement(){
     basicGridElement = array[0].cloneNode(true);
 }
 
-setTool(penButton);
-updateGridElements();
-setInitialGridElement();
-updateGrid(rangedPicker.value);
-
-console.log()
+function updateGridSizeDisplay(value){
+    gridSizeDisplay.innerText = "Grid Size: " + value + "x" + value;
+}
+window.onload = () => {
+    setTool(penButton);
+    updateGridElements();
+    setInitialGridElement();
+    updateGrid(rangedPicker.value);
+   
+    
+}
