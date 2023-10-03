@@ -13,13 +13,15 @@ let array;
 
 let mouseDown = 0;
 
-document.body.onmousedown = () => {
-    
-    mouseDown = 1
+document.body.onmousedown = (e) => {
+    mouseDown = 1;
+    // e.preventDefault();
 };
-document.body.onmouseup = () => {
-    mouseDown = 0;
-}
+document.body.onmouseup = () => {mouseDown = 0;}
+
+penButton.addEventListener("click", () => {setTool(penButton)} );
+eraserButton.addEventListener("click", () => {setTool(eraserButton)});
+rangedPicker.addEventListener("change", () => {updateGrid(rangedPicker.value)});
 
 function setTool(tool){
     activeTool.style.borderColor = "transparent";
@@ -52,7 +54,10 @@ function updateGridElements(){
     //make an array from all the gridElements and add event listener to each one
     array = Array.from(gridElements)
     array.forEach(element => {
-        element.addEventListener("mousedown", () => {mouseDown="true"});
+        element.addEventListener("mousedown", (e) => 
+        {mouseDown="true";
+        applyTool(element);
+        e.preventDefault();});
         element.addEventListener("mouseover", () => {applyTool(element)});
     });
 }
@@ -60,19 +65,15 @@ function updateGridElements(){
 function updateGrid(value){
 
     grid.innerHTML = "";
-
-
-    console.log("Updating grid with value " + value);
     let elementCopy = basicGridElement.cloneNode(true);
-
 
     for(let i = 0; i < value; i++)
     {
         let div = document.createElement("div");
         div.style.display = "flex";
         div.style.flex = "1";
+        div.draggable = "false";
       
-
         for(let j = 0; j < value; j++)
         {
             div.appendChild(elementCopy);
@@ -80,19 +81,14 @@ function updateGrid(value){
         }
 
         grid.appendChild(div);
-        
+    
     }
-
     updateGridElements();
 }
 
 function setInitialGridElement(){
     basicGridElement = array[0].cloneNode(true);
 }
-
-penButton.addEventListener("click", () => {setTool(penButton)} );
-eraserButton.addEventListener("click", () => {setTool(eraserButton)});
-rangedPicker.addEventListener("change", () => {updateGrid(rangedPicker.value)});
 
 setTool(penButton);
 updateGridElements();
